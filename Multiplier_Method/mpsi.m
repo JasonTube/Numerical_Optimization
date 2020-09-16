@@ -1,0 +1,6 @@
+function psi = mpsi(x, fun, hfun, gfun, dfun, dhfun, dgfun, mu, lambda, sigma)
+% 无约束子问题目标函数
+he = feval(hfun, x); gi = feval(gfun, x);
+psi = feval(fun, x)...
+    - he.*mu + 0.5 * sigma * norm(he)^2....
+    + (norm(min(0, sigma*gi-lambda))^2 - norm(lambda)^2)/(2*sigma);
